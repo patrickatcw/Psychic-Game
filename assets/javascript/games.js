@@ -3,10 +3,12 @@
     var wins = 0;
     var loses = 0;
     var guessesRemaining = 10;
-    var guessessoFar = 0;                                           
+    var guessessoFar = [];                                           
     var showGuess = document.getElementById("guess");
-    var showguesRemain = document.getElementById("guesremain");
-    var showguessoFar = document.getElementById("guessofar"); 
+
+    
+    /*var showguesRemain = document.getElementById("guesremain");
+    var showguessoFar = document.getElementById("guessofar"); */    //prevented letter populating in these 2 area when entered letter, saved through git bash
 
     console.log("linked to html showing up in console");    //checks html linking to javascript
 
@@ -15,12 +17,14 @@
     showguesRemain.textContent = event.key; 
     showguessoFar.textContent = event.key;
 
-    showGuess.push(guess);                                  //This is suppose to capture letters entered by the user    
+    showGuess.push(guess);                                  //This is suppose to capture letters entered by the user   
     computerChoices = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     showGuess.textContent=guess;
     showguesRemain.textContent=guesrmain;
     showguessoFar.textContent=guessofar;
 
+
+    //conditional statements
     if (userGuess === computerChoices) 
      {
         wins++;
