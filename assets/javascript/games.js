@@ -3,37 +3,41 @@
     var wins = 0;
     var loses = 0;
     var guessesRemaining = 10;
-    var guessessoFar = [];                                           
+    var guessessoFar = [];                                          //this may be questionable                                     
     var showGuess = document.getElementById("guess");
+    var showguesRemain = document.getElementById("guesremain");
+    var showguessoFar = document.getElementById("guessofar");    
 
-    
-    /*var showguesRemain = document.getElementById("guesremain");
-    var showguessoFar = document.getElementById("guessofar"); */    //prevented letter populating in these 2 area when entered letter, saved through git bash
-
-    console.log("linked to html showing up in console");    //checks html linking to javascript
+    console.log("linked to html showing up in console");            //checks html linking to javascript
 
     document.onkeyup = function(event) {      
-    showGuess.textContent = event.key;                      //variable to capute user's guess     
-    showguesRemain.textContent = event.key; 
-    showguessoFar.textContent = event.key;
+    showGuess.innerHTML = event.key;
+    var userGuess = event.key;                             //variable to compute user's guess     
+    //showguesRemain.textContent = event.key; 
+    //showguessoFar.textContent = event.key;
 
-    showGuess.push(guess);                                  //This is suppose to capture letters entered by the user   
+    guessessoFar.push(userGuess);                                          //This is suppose to capture letters entered by the user   
     computerChoices = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    showGuess.textContent=guess;
-    showguesRemain.textContent=guesrmain;
-    showguessoFar.textContent=guessofar;
+    showGuess.textContent=userGuess;
+    showguesRemain.textContent=guessesRemaining;
+    showguessoFar.textContent=guessessoFar.join(", ");
 
 
     //conditional statements
     if (userGuess === computerChoices) 
      {
-        wins++;
+       return wins++;
     }                                       
        
-     else (userGuess != computerChoices)
+     else if(userGuess != computerChoices && guessesRemaining >0)
       {
-        loses++;
+    
+        return guessesRemaining--;
     }
+
+
+    return loses++
+
       
      };
    
